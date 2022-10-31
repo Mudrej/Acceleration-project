@@ -8,8 +8,8 @@ excel_path = input('Enter the path to the excel file and name: ')
 DT = pd.read_excel(excel_path)
 
 # Preliminary processing: removing columns and sorting
-DT.drop(columns = ['Код субъекта РФ','Арктическая зона','Федеральный округ','Участок переписи населения','Номер домохозяйства','Пол'], axis = 1, inplace = True)
-DT.sort_values(by = 'Код населенного пункта')
+DT.drop(DT.columns[[0,3,4,8,9,16]], axis = 1, inplace = True)
+DT.sort_values(DT.columns[0])
 
 # Creating a dictionary of settlements and deleting the original data table
 Settl = {}

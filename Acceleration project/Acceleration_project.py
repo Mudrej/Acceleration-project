@@ -8,7 +8,7 @@ excel_path = input('Enter the path to the excel file and name: ')
 DT = pd.read_excel(excel_path)
 
 # Preliminary processing: removing columns and sorting
-DT.drop(DT.columns[[0,3,4,8,9,16]], axis = 1, inplace = True)
+DT = DT.iloc[:,[1,23]]
 DT.sort_values(DT.columns[0])
 
 # Creating a dictionary of settlements and deleting the original data table

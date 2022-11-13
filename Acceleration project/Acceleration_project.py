@@ -1,23 +1,42 @@
 # -*- coding: cp1251 -*-
 
-import numpy as np
-import pandas as pd
+import sys
+from typing import Container
+import PyQt6.QtWidgets as qw
+import PyQt6.QtCore as qc
+import excel_processing
 
-# Data import 
-excel_path = input('Enter the path to the excel file and name: ') 
-DT = pd.read_excel(excel_path)
+class MainWindow(qw.QMainWindow):
+    def __init__(self):
+        super().__init__()
 
-# Preliminary processing: removing columns and sorting
-DT = DT.iloc[:,[1,23]]
-DT.sort_values(DT.columns[0])
+        self.setWindowTitle("Средняя зарплата в районах Рязанской области")
+        self.resize(500,200)
 
-# Creating a dictionary of settlements and deleting the original data table
-Settl = {}
-Start_Cut = 0
-for i in range(DT.shape[0]-1):
-    if DT.iloc[i,0] != DT.iloc[i + 1,0]:
-        Settl.update({DT.iloc[i,0]: DT.iloc[Start_Cut:i]})
-        Start_Cut = i + 1
-del DT
+        self.label = qw.QLabel("Укажите путь к файлу с опросом")
 
-print(Settl, len(Settl))
+        self.lineEdit = qw.QLineEdit()
+        self.lineEdit.setFixedSize(200,20) 
+
+        self.button = qw.QPushButton("Далее")
+        self.button.setFixedSize(70,20)
+        self.button.clicked.connect(self.pressing_button)
+
+        layout = qw.QVBoxLayout()
+        layout.addWidget(self.label)
+        layout.addWidget(self.lineEdit)
+        layout.addWidget(self.button)
+        
+        container = qw.QWidget()
+        container.setLayout(layout)
+        self.setCentralWidget(container)
+
+    def pressing_button(self):
+        excel_processing.data_preparation(self.lineEdit.displayText())
+
+app = qw.QApplication(sys.argv)
+
+window = MainWindow()
+window.show()
+
+app.exec()

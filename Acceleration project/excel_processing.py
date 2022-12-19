@@ -21,7 +21,7 @@ def data_preparation(path):
     
     # Preliminary processing: removing columns and sorting
     DT = DT.iloc[:,[1,23]]
-    DT.sort_values(DT.columns[0])
+    DT = DT.sort_values(DT.columns[0])
     for i in range(DT.shape[0]):
         DT.iloc[i,0] = int((DT.iloc[i,0] // 1000000) % 1000)
     
@@ -29,12 +29,12 @@ def data_preparation(path):
     Settl = {}
     Start_Cut = 0
     for i in range(DT.shape[0] - 1):
-        if DT.iloc[i,0] != DT.iloc[i + 1,0]:
-            Settl.update({MunicipalObjects[DT.iloc[i,0]]: DT.iloc[Start_Cut:i,1].to_numpy()})
+        if DT.iloc[i,0] != DT.iloc[i+1,0]:
+            Settl.update({MunicipalObjects[DT.iloc[i,0]]: DT.iloc[Start_Cut:i,1]})
             Start_Cut = i + 1
     del DT
     
     for i in Settl:
-        Settl[i] = Settl[i].mean()
+        Settl[i] = int(Settl[i].mean())
 
-    print(Settl, len(Settl))
+    return(Settl)

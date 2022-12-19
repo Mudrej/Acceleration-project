@@ -24,11 +24,10 @@
   <ItemGroup>
     <Compile Include="Acceleration_project.py" />
     <Compile Include="excel_processing.py" />
+    <Compile Include="hist_processing.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.11" />
-    <InterpreterReference Include="Global|PythonCore|3.6-32" />
-    <InterpreterReference Include="Global|PythonCore|3.9" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

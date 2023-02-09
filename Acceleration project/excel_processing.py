@@ -1,6 +1,5 @@
 # -*- coding: cp1251 -*-
 
-import numpy as np
 import pandas as pd
 
 def data_preparation(path):
@@ -32,6 +31,7 @@ def data_preparation(path):
         if DT.iloc[i,0] != DT.iloc[i+1,0]:
             Settl.update({MunicipalObjects[DT.iloc[i,0]]: DT.iloc[Start_Cut:i,1]})
             Start_Cut = i + 1
+    Settl.update({MunicipalObjects[DT.iloc[DT.shape[0]-1,0]]: DT.iloc[Start_Cut:DT.shape[0]-1,1]})
     del DT
     
     for i in Settl:

@@ -11,7 +11,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
 
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(560, 430)
+        MainWindow.resize(570, 440)
 
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -19,24 +19,23 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
 
         MainWindow.setSizePolicy(sizePolicy)
-        MainWindow.setMinimumSize(QtCore.QSize(560, 430))
-        MainWindow.setMaximumSize(QtCore.QSize(560, 430))
+        MainWindow.setMinimumSize(QtCore.QSize(570, 440))
 
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
         self.WShow = QtWidgets.QWidget(self.centralwidget)
-        self.WShow.setGeometry(QtCore.QRect(0, 0, 560, 410))
+        self.WShow.setGeometry(QtCore.QRect(0, 0, 16777215, 16777215))
         self.WShow.setObjectName("WShow")
 
         self.textEdit = QtWidgets.QTextEdit(self.WShow)
         self.textEdit.setEnabled(True)
-        self.textEdit.setGeometry(QtCore.QRect(0, 0, 560, 410))
+        self.textEdit.setGeometry(QtCore.QRect(0, 0, 16777215, 16777215))
         self.textEdit.setReadOnly(True)
         self.textEdit.setObjectName("textEdit")
 
         self.WOpen = QtWidgets.QWidget(self.centralwidget)
-        self.WOpen.setGeometry(QtCore.QRect(0, 0, 560, 410))
+        self.WOpen.setGeometry(QtCore.QRect(0, 0, 16777215, 16777215))
         self.WOpen.setObjectName("WOpen")
 
         self.label = QtWidgets.QLabel(self.WOpen)

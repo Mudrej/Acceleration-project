@@ -6,7 +6,6 @@ from PyQt6.QtWidgets import QFileDialog
 import excel_processing
 import hist_processing
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
 
@@ -158,7 +157,8 @@ class Ui_MainWindow(object):
         self.WOpen.setVisible(False)
         self.WShow.setVisible(True)
         self.textEdit.clear()
-        self.textEdit.append(str(self.data).replace(",","\n").replace("'","").replace("{"," ").replace("}",""))
+        for i in self.data:
+            self.textEdit.append(f'{i}: опрошено {self.data[i][1]} человек, средн€€ зарплата {self.data[i][0]} рублей, все данные: {str(self.data[i][2]).replace("[","").replace("]","")}')
         self.save.setEnabled(True)
 
     def hist_visible(self):
@@ -175,7 +175,8 @@ class Ui_MainWindow(object):
         self.hist.setEnabled(True)
         self.WOpen.setVisible(False)
         self.textEdit.clear()
-        self.textEdit.append(str(self.data).replace(",","\n").replace("'","").replace("{"," ").replace("}",""))
+        for i in self.data:
+            self.textEdit.append(f'{i}: опрошено {self.data[i][1]} человек, средн€€ зарплата {self.data[i][0]} рублей, все данные: {str(self.data[i][2]).replace("[","").replace("]","")}')
         self.save.setEnabled(True)
 
     def open(self):
@@ -187,7 +188,8 @@ class Ui_MainWindow(object):
     def save_dialog(self):
         path = QFileDialog.getSaveFileName(parent = None, caption = 'Open file', directory = None, filter = "Text File (*.txt)")[0]
         with open(path,'w') as file:
-            file.write(str(self.data).replace(",","\n").replace("'","").replace("{"," ").replace("}",""))
+            for i in self.data:
+                file.write(f'{i}: опрошено {self.data[i][1]}, средн€€ зарплата {self.data[i][0]}, все данные: {str(self.data[i][2]).replace("[","").replace("]","")} \n\n')
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

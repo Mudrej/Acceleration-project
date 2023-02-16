@@ -12,6 +12,7 @@
     <Name>Acceleration project</Name>
     <RootNamespace>Acceleration project</RootNamespace>
     <InterpreterId>Global|PythonCore|3.11</InterpreterId>
+    <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

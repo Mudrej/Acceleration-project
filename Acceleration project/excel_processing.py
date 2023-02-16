@@ -29,12 +29,12 @@ def data_preparation(path):
     Start_Cut = 0
     for i in range(DT.shape[0] - 1):
         if DT.iloc[i,0] != DT.iloc[i+1,0]:
-            Settl.update({MunicipalObjects[DT.iloc[i,0]]: DT.iloc[Start_Cut:i,1]})
+            Settl.update({MunicipalObjects[DT.iloc[i,0]]: [DT.iloc[Start_Cut:i,1], len(DT.iloc[Start_Cut:i,1])]})
             Start_Cut = i + 1
-    Settl.update({MunicipalObjects[DT.iloc[DT.shape[0]-1,0]]: DT.iloc[Start_Cut:DT.shape[0]-1,1]})
+    Settl.update({MunicipalObjects[DT.iloc[DT.shape[0]-1,0]]: [DT.iloc[Start_Cut:DT.shape[0]-1,1], len(DT.iloc[Start_Cut:DT.shape[0]-1,1])]})
     del DT
     
     for i in Settl:
-        Settl[i] = int(Settl[i].mean())
-
+        Settl[i].append(list(Settl[i][0].round()))
+        Settl[i][0] = int(Settl[i][0].mean())
     return(Settl)

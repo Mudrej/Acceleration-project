@@ -35,6 +35,6 @@ def data_preparation(path):
     del DT
     
     for i in Settl:
+        Settl[i].append(list(Settl[i][0].round()))
         Settl[i][0] = int(Settl[i][0].mean())
-
     return(Settl)
